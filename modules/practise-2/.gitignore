@@ -1,2 +1,5 @@
+# Игнорируем сгенерированные отчеты
 reports/
-without-solid-report.txt
+*.txt
+*.json
+*.xml

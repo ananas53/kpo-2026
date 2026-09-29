@@ -4,6 +4,8 @@ import studying.withsolid.model.Report;
 import studying.withsolid.service.ReportService;
 import studying.withsolid.service.impl.EmailReportSender;
 import studying.withsolid.service.impl.TextReportSaver;
+import studying.withsolid.service.impl.JsonReportSaverImpl;
+import studying.withsolid.service.impl.XmlReportSaverImpl;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +13,7 @@ public class Main {
     /**
      * Runs the report creation, persistence, and delivery demonstration.
      */
-    static void main() {
+    public static void main(String[] args) {
         var now = LocalDateTime.now();
         var report = Report.builder()
                 .title("Отчёт")
@@ -21,11 +23,25 @@ public class Main {
                 .motorcyclesSold(50)
                 .build();
 
-        var reportService = new ReportService(
+        // Пример использования текстового сохранителя:
+        var textReportService = new ReportService(
                 new TextReportSaver(),
                 new EmailReportSender()
         );
+        textReportService.process(report, "example@example.com");
 
-        reportService.process(report, "example@example.com");
+        // Пример использования JSON сохранителя:
+        var jsonReportService = new ReportService(
+                new JsonReportSaverImpl(),
+                new EmailReportSender()
+        );
+        jsonReportService.process(report, "example@example.com");
+
+        // Пример использования XML сохранителя:
+        var xmlReportService = new ReportService(
+                new XmlReportSaverImpl(),
+                new EmailReportSender()
+        );
+        xmlReportService.process(report, "example@example.com");
     }
 }
