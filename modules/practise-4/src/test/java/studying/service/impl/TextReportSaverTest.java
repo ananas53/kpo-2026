@@ -20,10 +20,11 @@ class TextReportSaverTest {
     @TempDir
     private Path temporaryDirectory;
 
-    final Report report = new Report("Продажи", LocalDate.of(2026, 9, 29),
-            LocalTime.of(10, 15, 30), 12, 7);
-
     private ReportSaverImpl saver;
+
+    private final Report report = new Report("Продажи",
+            LocalDate.of(2026, 9, 29),
+            LocalTime.of(10, 15, 30), 12, 7);
 
     @BeforeEach
     void setUp() {
