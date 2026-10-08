@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import studying.withsolid.service.ReportSaver;
 import studying.withsolid.service.ReportSender;
-import studying.withsolid.service.ReportServiceFacade;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -3,9 +3,9 @@ package studying.withsolid;
 import studying.withsolid.model.Report;
 
 import java.time.LocalDateTime;
-import studying.withsolid.service.ReportServiceFacade;
-import studying.withsolid.service.impl.ReportSaverImpl;
+
 import studying.withsolid.service.impl.ReportSenderImpl;
+import studying.withsolid.service.impl.TextReportSaver;
 
 public class Main {
     /**
@@ -23,7 +23,7 @@ public class Main {
 
         var reportService = new ReportServiceFacade(
                 new ReportSenderImpl(),
-                new ReportSaverImpl()
+                new TextReportSaver()
         );
 
         reportService.process(report, "example@example.com");
